@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>OCR</title>
+    <style>
+        .image_size {
+            width: 500px;
+            height: auto;
+        }
+
+        .image_div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <button style="text-align: center"><a href="/">Home</a></button> Back To Home
+    <h1>Show Result Of OCR Data</h1>
+
+    <div class="image_div">
+        <% if(imagepath){ %>
+            <div>
+                <h3>Original Image</h3>
+                <img src="<%- imagepath %>" class="image_size" alt="">
+            </div>
+            <% } %>
+
+
+                <div>
+                    <h3>Text Out Put </h3>
+                    <pre><%- data %></pre>
+                </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

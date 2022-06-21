@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>OCR</title>
+    <style>
+        .image_size {
+            width: 350px;
+            height: auto;
+        }
+
+        .header_text,
+        .body_div {
+            text-align: center;
+            margin: 10px auto;
+        }
+
+
+        .image_div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .first_div {
+            margin-right: 15px;
+        }
+
+        .preview_imagediv {
+            display: none;
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .preview_imagediv>div {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-input img {
+            width: 350px;
+            display: none;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body class="body_div">
+    <h1 class="header_text">OCR web app And Image Color Remove/Delete.</h1>
+
+    <h2>Task : 1</h2>
+    <h2>Takes the below image as an input and shows the text output using OCR.</h2>
+
+    <div class="image_div">
+
+        <div class="first_div">
+            <h3>Input</h3>
+            <img src="demo/test1.png" class="image_size" alt="">
+        </div>
+        <div>
+            <h3>Output</h3>
+            <img src="demo/textResult.png" class="image_size" alt="">
+        </div>
+    </div>
+    <form id="frmUploader" enctype="multipart/form-data" action="/upload" method="post">
+        <input type="file" name="image" multiple />
+
+        <input type="submit" name="submit" id="btnSubmit" value="Upload" />
+    </form>
+    <br>
+    <div style=" margin-bottom: 500px;">
+
+        <h2>Task : 2</h2>
+        <h2>select a specific colour from the image and delete it.</h2>
+        <h4>For Testing Purpose</h4>
+
+        <div class="image_div">
+
+
+            <div class="first_div">
+                <h3>Input</h3>
+                <img src="demo/Artwork.png" class="image_size" alt="">
+            </div>
+            <div>
+                <h3>Output</h3>
+                <img src="demo/output.png" class="image_size" alt="">
+            </div>
+
+
+
+
+        </div>
+        <div class="preview_imagediv">
+            <div>
+
+                <h2>Preview Image</h2>
+                <div style="margin :0 auto">
+                    <img id="change">
+                </div>
+                <button class="open-picker">Open Color Picker</button>
+            </div>
+        </div>
+
+
+        <!-- <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);"> -->
+
+        <form id="frmUploader" enctype="multipart/form-data" action="/change" method="post">
+            <input type="file" name="change" id="change" accept="image/*" onchange="showPreview(event);" multiple />
+
+
+            <input type="text" name="colorHex" id="colorHex">
+
+            <input type="submit" name="submit" id="btnChangeSubmit" value="submit" />
+
+
+        </form>
+    </div>
+    <script>
+
+        function showPreview(event) {
+
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                let preview = document.querySelector("#change");
+                let preview_imagediv = document.querySelector('.preview_imagediv')
+                preview.src = src;
+                preview_imagediv.style.display = 'block'
+                preview.style.display = "block";
+                preview.style.width = "350px";
+            }
+        }
+    </script>
+    <script src="javascripts/main.js"></script>
+</body>
+
+</html>
